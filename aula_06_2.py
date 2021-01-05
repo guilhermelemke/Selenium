@@ -19,4 +19,4 @@ btn = b.find_element_by_css_selector('[name="l0c0"]')
 
 nome.send_keys('Eduardo')
 password.send_keys('senha123')
-btn.click()
+#btn.click()
