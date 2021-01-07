@@ -1,20 +1,7 @@
 from abc import ABC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
-
-class PageElement(ABC):
-    def __init__(self, webdriver, url=''):
-        self.webdriver = webdriver
-        self.url = url
-
-    def find_element(self, locator):
-        return self.webdriver.find_element(*locator)
-
-    def find_elements(self, locator):
-        return self.webdriver.find_elements(*locator)        
-
-    def open(self):
-        self.webdriver.get(self.url)
+from library import Page, PageElement
 
 
 class Todo(PageElement):
@@ -39,7 +26,6 @@ class CardContainer(PageElement, ABC):
         for card in cards:
             po_cards.append(Card(card))
         return po_cards
-
 
 
 class AFazer(CardContainer):
@@ -83,26 +69,33 @@ class Card:
         return f'Card(name="{self.name}", description="{self.description}")'
 
 
+
+
+
+
+
+class PageTodo(Page):
+    a_fazer = AFazer()
+    fazendo = Fazendo()
+    pronto = Pronto()
+    todo = Todo()
+
+
+
+
+
+
 from selenium.webdriver import Firefox
 
-webdriver = Firefox()
-url = 'https://selenium.dunossauro.live/todo_list.html'
+browser = Firefox()
 
-todo_element = Todo(webdriver, url)
-todo_element.open()
+page = PageTodo(browser, 'http://selenium.dunossauro.live/todo_list.html')
 
-todo_element.create_todo(
-    name='Dormir',
-    description='Dormir é muito bom'
-)
+page.open()
+page.todo.create_todo('Fazer a aula', 'Selenium aula POM')
 
-a_fazer = AFazer(webdriver)
+a_fazer = Todo(browser)
 
-todos = a_fazer.todos()
-todos[0].do()
+todo.create_todo('Criado pelo PageElement', 'Teste')
 
-fazendo = Fazendo(webdriver)
-todos[0].do()
-
-pronto = Pronto(webdriver)
-print(pronto.todos())
+print(page.a_fazer.todos())

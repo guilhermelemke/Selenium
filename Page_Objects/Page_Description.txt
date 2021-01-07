@@ -18,3 +18,21 @@ Página:
     - Fazendo
         - Cartões
 """
+
+Problemas de Orientação a Objetos
+
+- Responsabilidades
+    - PageElement
+        - url
+        - webdriver
+        - find*
+
+Responsabilidades
+
+1. Selenium
+    - coisas de Selenium
+2. Não temos uma Página (Page Object)
+3. PageElement, é ser elemento
+
+Reflexão - Reflection
+    - Mudar o código em tempo de execução
