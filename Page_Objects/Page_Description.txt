@@ -1,0 +1,20 @@
+"""
+DSL
+
+Página:
+    - Barra de navegação
+    - Todo:
+        - Nome
+        - Descrição
+        - Urgente
+        - Botão
+        * Criar Todo
+            & nome
+            & descrição
+            & urgente
+            & click
+    - A fazer
+        - Cartões
+    - Fazendo
+        - Cartões
+"""
